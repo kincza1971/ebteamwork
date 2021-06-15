@@ -11,7 +11,7 @@ public class GameRepository {
     private List<Game> games = new ArrayList<>();
 
     public void addGame(Game game) {
-        if(game != null) {
+        if (game != null) {
             games.add(game);
         }
     }
@@ -20,13 +20,13 @@ public class GameRepository {
         return new ArrayList<>(games);
     }
 
-    public void addGamesFromFile(Path path){
-        try(Stream<String> lines = Files.newBufferedReader(path).lines()){
+    public void addGamesFromFile(Path path) {
+        try (Stream<String> lines = Files.newBufferedReader(path).lines()) {
             games.addAll(lines
                     .map(Game::parse)
                     .collect(Collectors.toList()));
-        }catch (IOException ioe){
-            throw new IllegalArgumentException("Can not read file",ioe);
+        } catch (IOException ioe) {
+            throw new IllegalArgumentException("Can not read file", ioe);
         }
     }
 
