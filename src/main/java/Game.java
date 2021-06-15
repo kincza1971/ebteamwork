@@ -11,7 +11,7 @@ public class Game {
         this.firstCountryScore = firstCountryScore;
         this.secondCountryScore = secondCountryScore;
     }
-
+//proba modositas
     public String getFirstCountry() {
         return firstCountry;
     }
