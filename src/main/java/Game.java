@@ -5,7 +5,7 @@ public class Game {
     private String firstCountry;
     private String secondCountry;
     private int firstCountryScore;
-    private  int secondCountryScore;
+    private int secondCountryScore;
 
     public Game(String firstCountry, String secondCountry, int firstCountryScore, int secondCountryScore) {
         this.firstCountry = firstCountry;
@@ -13,7 +13,8 @@ public class Game {
         this.firstCountryScore = firstCountryScore;
         this.secondCountryScore = secondCountryScore;
     }
-//proba modositas
+
+    //proba modositas
     public String getFirstCountry() {
         return firstCountry;
     }
@@ -34,11 +35,16 @@ public class Game {
         String winner = null;
         if (firstCountryScore > secondCountryScore) {
             winner = firstCountry;
-        } else if (firstCountryScore<secondCountryScore) {
+        } else if (firstCountryScore < secondCountryScore) {
             winner = secondCountry;
         }
 
         return Optional.ofNullable(winner);
+    }
+
+    public static Game parse(String str) {
+        String[] data = str.split(";");
+        return new Game(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]));
     }
 }
 //# Csapatmunka feladat
