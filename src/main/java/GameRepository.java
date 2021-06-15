@@ -7,4 +7,5 @@ public class GameRepository {
     public void add(Game game) {
         games.add(game);
     }
+
 }
