@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Optional;
 
 public class Game {
@@ -45,6 +46,22 @@ public class Game {
     public static Game parse(String str) {
         String[] data = str.split(";");
         return new Game(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return getFirstCountryScore() == game.getFirstCountryScore()
+                && getSecondCountryScore() == game.getSecondCountryScore()
+                && getFirstCountry().equals(game.getFirstCountry())
+                && getSecondCountry().equals(game.getSecondCountry());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFirstCountry(), getSecondCountry(), getFirstCountryScore(), getSecondCountryScore());
     }
 }
 //# Csapatmunka feladat

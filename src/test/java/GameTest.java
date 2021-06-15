@@ -46,7 +46,10 @@ class GameTest {
         result = g3.getWinner();
 
         assertFalse(result.isPresent());
+    }
 
-
+    @Test
+    void parse() {
+        assertEquals(Game.parse("Brazil;France;2;3"), new Game("Brazil","France",2,3));
     }
 }
