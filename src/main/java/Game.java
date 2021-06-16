@@ -45,7 +45,17 @@ public class Game {
 
     public static Game parse(String str) {
         String[] data = str.split(";");
-        return new Game(data[0],data[1],Integer.parseInt(data[2]),Integer.parseInt(data[3]));
+        return new Game(data[0], data[1], Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+    }
+
+    public int getNumberOfGoalsByCountry(String country) {
+        if (firstCountry.equals(country)) {
+            return firstCountryScore;
+        }
+        if (secondCountry.equals(country)) {
+            return secondCountryScore;
+        }
+        return 0;
     }
 
     @Override

@@ -1,8 +1,35 @@
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+
 public class GameService {
     GameRepository repo;
 
     public GameService(GameRepository repo) {
         this.repo = repo;
+    }
+
+    public Optional<Game> getGameBiggestDifference() {
+        return repo.getGames().stream().sorted((g1, g2) ->
+                Math.abs(g2.getFirstCountryScore()-g2.getSecondCountryScore())
+                        - Math.abs(g1.getFirstCountryScore()-g1.getSecondCountryScore())
+        ).findFirst();
+    }
+
+    public int getNumberOfGoalsByCountry(String country){
+        return repo.getGames().stream()
+                .mapToInt(g->g.getNumberOfGoalsByCountry(country))
+                .sum();
+    }
+
+    public Optional<String> getCountryWithMostGoals(){
+        return repo.getGames().stream()
+                .map(g-> List.of(g.getFirstCountry(),g.getSecondCountry()))
+                .flatMap(Collection::stream)
+                .distinct()
+                .max(Comparator.comparingInt(this::getNumberOfGoalsByCountry));
+
     }
 
 }

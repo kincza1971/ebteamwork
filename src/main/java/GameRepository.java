@@ -29,12 +29,4 @@ public class GameRepository {
             throw new IllegalArgumentException("Can not read file", ioe);
         }
     }
-
-    public Optional<Game> getGameBiggestDifference() {
-        return games.stream().sorted((g1, g2) ->
-                Math.abs(g2.getFirstCountryScore()-g2.getSecondCountryScore())
-                        - Math.abs(g1.getFirstCountryScore()-g1.getSecondCountryScore())
-        ).findFirst();
-    }
-
 }

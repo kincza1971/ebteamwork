@@ -45,6 +45,11 @@ class GameRepositoryTest {
                 .hasSize(15)
                 .extracting("firstCountry")
                 .contains("Italy");
+    }
 
+    @Test
+    void testAddGamesFromFileWithWrongPath() {
+        Path path = Path.of("/results.csv");
+        assertThrows(IllegalArgumentException.class,()->repo.addGamesFromFile(path));
     }
 }
