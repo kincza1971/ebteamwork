@@ -1,3 +1,5 @@
+import java.security.PublicKey;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -82,6 +84,10 @@ public class Game {
                 ", firstCountryScore=" + firstCountryScore +
                 ", secondCountryScore=" + secondCountryScore +
                 '}';
+    }
+
+    public List<String> getCountries() {
+        return List.of(firstCountry, secondCountry);
     }
 }
 //# Csapatmunka feladat

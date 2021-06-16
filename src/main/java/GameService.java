@@ -11,10 +11,8 @@ public class GameService {
     }
 
     public Optional<Game> getGameBiggestDifference() {
-        return repo.getGames().stream().sorted((g1, g2) ->
-                Math.abs(g2.getFirstCountryScore()-g2.getSecondCountryScore())
-                        - Math.abs(g1.getFirstCountryScore()-g1.getSecondCountryScore())
-        ).findFirst();
+        return repo.getGames().stream()
+                .max(Comparator.comparingInt(g -> Math.abs(g.getFirstCountryScore() - g.getSecondCountryScore())));
     }
 
     public int getNumberOfGoalsByCountry(String country){
