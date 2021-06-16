@@ -3,10 +3,10 @@ import java.util.Optional;
 
 public class Game {
 
-    private String firstCountry;
-    private String secondCountry;
-    private int firstCountryScore;
-    private int secondCountryScore;
+    private final String firstCountry;
+    private final String secondCountry;
+    private final int firstCountryScore;
+    private final int secondCountryScore;
 
     public Game(String firstCountry, String secondCountry, int firstCountryScore, int secondCountryScore) {
         this.firstCountry = firstCountry;
@@ -62,6 +62,16 @@ public class Game {
     @Override
     public int hashCode() {
         return Objects.hash(getFirstCountry(), getSecondCountry(), getFirstCountryScore(), getSecondCountryScore());
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "firstCountry='" + firstCountry + '\'' +
+                ", secondCountry='" + secondCountry + '\'' +
+                ", firstCountryScore=" + firstCountryScore +
+                ", secondCountryScore=" + secondCountryScore +
+                '}';
     }
 }
 //# Csapatmunka feladat
